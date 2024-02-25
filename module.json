@@ -32,5 +32,8 @@
       "discord": "websterguy"
     }
   ],
-  "description": "When clicking the apply damage button on chat cards, will force open the damage adjustment dialog if any selected tokens have anything in any resistance, weakness, or immunity field on the character sheet."
+  "description": "When clicking the apply damage button on chat cards, will force open the damage adjustment dialog if any selected tokens have anything in any resistance, weakness, or immunity field on the character sheet.",
+  "url": "https://github.com/websterguy/pf1-resistance-check",
+  "manifest": "https://github.com/websterguy/pf1-resistance-check/releases/latest/download/module.json",
+  "download": "https://github.com/websterguy/pf1-resistance-check/releases/download/0.1.0/pf1-resistance-check.zip"
 }
