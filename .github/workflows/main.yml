@@ -114,7 +114,7 @@ jobs:
             `# Options`                          \
             --recurse-paths                      \
             `# The name of the output file`      \
-             ./module.zip                        \
+             ./pf1-resistance-check.zip          \
             `# The files that will be included.` \
             module.json                          \
             scripts/
