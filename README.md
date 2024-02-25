@@ -1,4 +1,4 @@
-# Mighty Morphin Mod
+# PF1 Resistance Check Mod
 ## Installation
 
 https://github.com/websterguy/pf1-resistance-check/releases/latest/download/module.json
