@@ -1,7 +1,7 @@
 Hooks.once('init', () => {
     game.settings.register('pf1-resistance-check', 'enableCheck', {
         name: 'Check enabled',
-        hint: 'Client setting to enable the module',
+        hint: 'Client setting to enable the module. If disabled, all the below settings are ignored.',
         scope: 'client',
         config: true,
         type: Boolean,
