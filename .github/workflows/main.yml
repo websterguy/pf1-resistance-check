@@ -1,37 +1,4 @@
-# GitHub Actions workflow for creating a new FoundryVTT module release.
-#
-# Useful References:
-#   - https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
-#   - https://docs.github.com/en/actions/learn-github-actions/contexts
-#   - https://docs.github.com/en/actions/learn-github-actions/environment-variables
-#
-# Troubleshooting Checklist:
-#   - Is the module's manifest file valid JSON?
-#     You can test your manifest file using https://jsonlint.com/.
-#
-#   - Does the module's manifest have all the required keys?
-#     See https://foundryvtt.com/article/module-development/#manifest for more
-#     information.
-#
-#   - Are all the proper files and directories being included in the release's
-#     module archive ("module.zip")?
-#     Check that the correct files are being passed to the `zip` command run
-#     in the "Create Module Archive" step below.
-#
-#   - Is the release tag the proper format?
-#     See the comments for the "Extract Version From Tag" step below.
-#
-#   - Is a GitHub release being published?
-#     This workflow will only run when a release is published, not when a
-#     release is updated. Furthermore, note that while a GitHub release will
-#     (by default) create a repository tag, a repository tag will not create
-#     or publish a GitHub release.
-#
-#   - Has the module's entry on FoundryVTT's module administration site
-#     (https://foundryvtt.com/admin) been updated?
-#
-name: Create Module Files For GitHub Release
-
+name: Release Creation
 
 on: 
   release:
@@ -53,27 +20,10 @@ jobs:
         version: ${{github.event.release.tag_name}}
         url: https://github.com/${{github.repository}}
         manifest: https://github.com/${{github.repository}}/releases/latest/download/module.json
-        download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}pf1-resistance-check.zip
-
+        download: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/pf1-resistance-check.zip
 
     # Create a "module.zip" archive containing all the module's required files.
-    # If you have other directories or files that will need to be added to
-    # your packaged module, add them here.
-    - name: Create Module Archive
-      run: |
-        # Note that `zip` will only emit warnings when a file or directory
-        # doesn't exist, it will not fail.
-        zip                                    \
-          `# Options`                          \
-          --recurse-paths                      \
-          `# The name of the output file`      \
-           ./pf1-resistance-check.zip          \
-          `# The files that will be included.` \
-          module.json                          \
-          scripts/
-        # Don't forget to add a backslash at the end of the line for any
-        # additional files or directories!
-
+    - run: zip -r ./pf1-resistance-check.zip module.json scripts/
 
     # Update the GitHub release with the manifest and module archive files.
     - name: Update Release With Files
@@ -82,8 +32,8 @@ jobs:
       with:
         allowUpdates: true
         name: ${{ github.event.release.name }}
-        draft: ${{ github.event.release.unpublished }}
-        prerelease: ${{ github.event.release.prerelease }}
+        draft: false
+        prerelease: false
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: './module.json, ./pf1-resistance-check.zip'
         tag: ${{ github.event.release.tag_name }}
