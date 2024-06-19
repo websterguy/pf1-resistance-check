@@ -85,15 +85,17 @@ Hooks.once('init', () => {
                 'cres': '',
                 'di': {
                     'value': [],
-                    'custom': ''
+                    'custom': [],
+                    'immunities': [],
+                    'resistances': []
                 },
                 'dv': {
                     'value': [],
-                    'custom': ''
+                    'custom': []
                 },
                 'ci': {
                     'value': [],
-                    'custom': ''
+                    'custom': []
                 }
             };
             let forceDialog = false;
