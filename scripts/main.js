@@ -84,18 +84,25 @@ Hooks.once('init', () => {
                 },
                 'cres': '',
                 'di': {
-                    'value': [],
-                    'custom': [],
-                    'immunities': [],
-                    'resistances': []
+                    'base': [],
+                    'custom': new Set(),
+                    'names': [],
+                    'standard': new Set(),
+                    'total': new Set()
                 },
                 'dv': {
-                    'value': [],
-                    'custom': []
+                    'base': [],
+                    'custom': new Set(),
+                    'names': [],
+                    'standard': new Set(),
+                    'total': new Set()
                 },
                 'ci': {
-                    'value': [],
-                    'custom': []
+                    'base': [],
+                    'custom': new Set(),
+                    'names': [],
+                    'standard': new Set(),
+                    'total': new Set()
                 }
             };
             let forceDialog = false;
@@ -108,7 +115,7 @@ Hooks.once('init', () => {
             }
             else {
                 for (const token of canvas.tokens.controlled) {
-                    if (Object.keys(diffObject(emptyIWR, token.actor?.system.traits)).some(o => keysToCheck.includes(o))) {
+                    if (Object.keys(foundry.utils.diffObject(emptyIWR, token.actor?.system.traits)).some(o => keysToCheck.includes(o))) {
                         forceDialog = true;
                         break;
                     }
