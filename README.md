@@ -5,7 +5,7 @@ https://github.com/websterguy/pf1-resistance-check/releases/latest/download/modu
 
 ## Description
 
-When clicking the apply damage button in a chat card, if any selected tokens have anything in their resistance, reduction, weakness, or immunity the adjustment dialog will be forced open. User can still hold shift to open the dialog as normal. User can hold ctrl+shift to always bypass the dialog.
+When clicking the apply damage button in a chat card, if any selected tokens have anything in their resistance, reduction, weakness, or immunity the adjustment dialog will be forced open. User can still hold shift to open the dialog as normal. User can hold ctrl/meta key to temporarily bypass the checks from the module and not open the dialog.
 
 ## Donations
 

@@ -74,41 +74,24 @@ Hooks.once('init', () => {
             }
 
             const emptyIWR = {
+                'ci':[],
+                'cres': '',
+                'di': [],
                 'dr': {
                     'value': [],
                     'custom': ''
                 },
+                'dv': [],
                 'eres': {
                     'value': [],
                     'custom': ''
-                },
-                'cres': '',
-                'di': {
-                    'value': [],
-                    'custom': [],
-                    'immunities': [],
-                    'resistances': []
-                },
-                'dv': {
-                    'value': [],
-                    'custom': []
-                },
-                'ci': {
-                    'value': [],
-                    'custom': []
                 }
             };
             let forceDialog = false;
 
-            if (event.shiftKey && !event.ctrlKey) {
-                forceDialog = false;
-            }
-            else if (event.shiftKey && event.ctrlKey) {
-                forceDialog = false;
-            }
-            else {
+            if (!event.shiftKey && !(event.ctrlKey || event.metaKey)) {
                 for (const token of canvas.tokens.controlled) {
-                    if (Object.keys(diffObject(emptyIWR, token.actor?.system.traits)).some(o => keysToCheck.includes(o))) {
+                    if (Object.keys(foundry.utils.diffObject(emptyIWR, token.actor?.toObject().system.traits)).some(o => keysToCheck.includes(o))) {
                         forceDialog = true;
                         break;
                     }

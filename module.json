@@ -3,8 +3,8 @@
   "title": "PF1 Resistance Check",
   "version": "1.0.0",
   "compatibility": {
-    "minimum": "11",
-    "verified": "11"
+    "minimum": "12",
+    "verified": "13.342"
   },
   "relationships": {
     "requires": [
@@ -19,8 +19,8 @@
         "id": "pf1",
         "type": "system",
         "compatibility": {
-          "minimum": "10.0",
-          "verified": "10.1"
+          "minimum": "11",
+          "verified": "11.6"
         }
       }
     ]
